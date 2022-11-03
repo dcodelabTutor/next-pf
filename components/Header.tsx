@@ -1,4 +1,9 @@
 import React from 'react';
+//npm install @heroicons/react@1
+//npm install react-icons --save
+
+import { BellIcon, SearchIcon } from '@heroicons/react/solid';
+import Link from 'next/link';
 
 function Header() {
 	return (
@@ -20,7 +25,18 @@ function Header() {
 				</ul>
 			</div>
 
-			<div></div>
+			<div className='flex items-center space-x-4 text-sm font-light'>
+				<SearchIcon className='hidden h-6 w-6 sm:inline' />
+				<p className='hidden lg:inline'>Kids</p>
+				<BellIcon className='h-6 w-6' />
+				<Link href='/account'>
+					<img
+						src='https://rb.gy/g1pwyx'
+						alt='profile'
+						className='cursor-pointer rounded'
+					/>
+				</Link>
+			</div>
 		</header>
 	);
 }
