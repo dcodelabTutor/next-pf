@@ -36,7 +36,6 @@ const Home = ({
 			<Header />
 
 			<main>
-				{/* Banner컴포넌트 내부에 props 타입을 지정해서 props 미 전달시 에러 */}
 				<Banner netflixOriginals={netflixOriginals} />
 				<section></section>
 			</main>
