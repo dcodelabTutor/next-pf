@@ -16,10 +16,6 @@ interface Props {
 	documentaries: Movie[];
 }
 
-//아래 getServerSideProps로 리턴된 결과물을 바로 파라미터를 통해 전달받고
-//typings.d.ts파일로 지정된 인터페이스를 다시 위쪽 Props 인터페이스로 지정해서
-//파라미터에 Props 타입 지정
-//이렇게 지정하면 Props로 지정하지 않는 파라미터 입력시 에러출력
 const Home = ({
 	netflixOriginals,
 	actionMovies,
@@ -30,7 +26,6 @@ const Home = ({
 	topRated,
 	trendingNow,
 }: Props) => {
-	console.log(netflixOriginals);
 	return (
 		<div className='relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]'>
 			<Head>
@@ -41,7 +36,8 @@ const Home = ({
 			<Header />
 
 			<main>
-				<Banner />
+				{/* Banner컴포넌트 내부에 props 타입을 지정해서 props 미 전달시 에러 */}
+				<Banner netflixOriginals={netflixOriginals} />
 				<section></section>
 			</main>
 

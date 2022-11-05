@@ -1,12 +1,15 @@
 import Image from 'next/image';
-//tmdb api (dcodelab , !andy1006)
+import { Movie } from '../typings';
 
-function Banner() {
+interface Props {
+	netflixOriginals: Movie[];
+}
+
+//props로 전달받는 값 타입 지정
+function Banner({ netflixOriginals }: Props) {
 	return (
 		<div>
-			{/* <div className="">
-      <Image />
-    </div> */}
+			<div className=''>{/* <Image src={''} /> */}</div>
 		</div>
 	);
 }
