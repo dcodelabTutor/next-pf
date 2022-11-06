@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import { Movie } from '../typings';
+//tailwind-scrollbar-hide
+//npm install tailwind-scrollbar-hide
+//npm install --save-dev tailwind-scrollbar
 
 interface Props {
+	//firebase를 쓸때는 다음과 같이 처리해야 됨 나중에 설명 예정
+	//movie: Movie | DocumentData
 	movie: Movie;
 }
 
