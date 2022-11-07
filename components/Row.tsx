@@ -1,7 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import { Movie } from '../typings';
 import Thumbnail from './Thumbnail';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 interface Props {
 	title: string;
@@ -26,6 +26,10 @@ function Row({ title, movies }: Props) {
 			rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
 		}
 	};
+
+	useEffect(() => {
+		console.log(rowRef.current?.scrollLeft);
+	}, []);
 
 	return (
 		<div className='h-40 space-y-0.5 md:space-y-2'>

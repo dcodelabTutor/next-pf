@@ -18,8 +18,10 @@ function Thumbnail({ movie }: Props) {
 					movie.backdrop_path || movie.poster_path
 				}`}
 				className='rounded-sm object-cover md:rounded'
-				layout='fill'
-				objectFit='cover'
+				fill
+				sizes='260px'
+				quality={20}
+				priority
 				alt={`${movie.title}`}
 			/>
 		</div>

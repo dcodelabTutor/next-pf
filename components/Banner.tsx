@@ -23,12 +23,15 @@ function Banner({ netflixOriginals }: Props) {
 
 	return (
 		<div className='flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12'>
-			<div className='absolute top-0 left-0 -z-10 h-[95vh] w-[100%]'>
+			<div className='absolute top-0 left-0 -z-10 h-[95vh] w-[100%] overflow-hidden'>
 				<Image
 					src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`}
 					alt={`${movie?.title}`}
-					layout='fill'
-					objectFit='cover'
+					fill
+					sizes='100vw'
+					className='object-cover'
+					quality={50} //이미지 퀄리리 1~100 , 미지정시 75
+					priority
 				/>
 			</div>
 
