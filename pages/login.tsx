@@ -1,3 +1,6 @@
+//https://react-hook-form.com/get-started
+//npm install react-hook-form
+
 import Head from 'next/head';
 import Image from 'next/image';
 
