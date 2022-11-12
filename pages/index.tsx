@@ -43,21 +43,12 @@ const Home = ({
         <section className="md:space-y-24">
           <Row title="Trending Now" movies={trendingNow} />
           <Row title="Top Rated" movies={topRated} />
-          <Row
-            title="Action Thrillers"
-            movies={actionMovies}
-          />
+          <Row title="Action Thrillers" movies={actionMovies} />
 
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />
-          <Row
-            title="Romance Movies"
-            movies={romanceMovies}
-          />
-          <Row
-            title="Documentaries"
-            movies={documentaries}
-          />
+          <Row title="Romance Movies" movies={romanceMovies} />
+          <Row title="Documentaries" movies={documentaries} />
         </section>
       </main>
 
@@ -79,26 +70,14 @@ export const getServerSideProps = async () => {
     romanceMovies,
     documentaries
   ] = await Promise.all([
-    fetch(requests.fetchNetflixOriginals).then((res) =>
-      res.json()
-    ),
+    fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
     fetch(requests.fetchTrending).then((res) => res.json()),
     fetch(requests.fetchTopRated).then((res) => res.json()),
-    fetch(requests.fetchActionMovies).then((res) =>
-      res.json()
-    ),
-    fetch(requests.fetchComedyMovies).then((res) =>
-      res.json()
-    ),
-    fetch(requests.fetchHorrorMovies).then((res) =>
-      res.json()
-    ),
-    fetch(requests.fetchRomanceMovies).then((res) =>
-      res.json()
-    ),
-    fetch(requests.fetchDocumentaries).then((res) =>
-      res.json()
-    )
+    fetch(requests.fetchActionMovies).then((res) => res.json()),
+    fetch(requests.fetchComedyMovies).then((res) => res.json()),
+    fetch(requests.fetchHorrorMovies).then((res) => res.json()),
+    fetch(requests.fetchRomanceMovies).then((res) => res.json()),
+    fetch(requests.fetchDocumentaries).then((res) => res.json())
   ]);
 
   return {

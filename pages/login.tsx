@@ -1,10 +1,15 @@
 //https://react-hook-form.com/get-started
 //npm install react-hook-form
-import { signInAnonymously, signInWithPopup } from 'firebase/auth';
+
+//이메일, 비번을 입력하고 Sign In 버튼을 클릭하면 경고창이 뜨는데..
+//firebase- authenticaion으로 이동해서 email, password로 활성화 및 첫번째꺼 체크
+//이후 다시 새로고침후 로그인시  뜨는 경고창에서 유저가 없다는 메세지가 뜨면 성공
+
 import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import useAuth from '../hooks/useAuth';
 
 interface Inputs {
   email: string;
@@ -13,6 +18,7 @@ interface Inputs {
 
 function login() {
   const [Login, setLogin] = useState(false);
+  const { signIn, signUp } = useAuth();
 
   const {
     register,
@@ -20,12 +26,11 @@ function login() {
     formState: { errors }
   } = useForm<Inputs>();
 
-  // submit이벤트 발생시 등록한 폼에 입력된 값을 콘솔로 출력
   const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
     if (Login) {
-      //await signIn(email, passwrd)
+      await signIn(email, password);
     } else {
-      //await signUp(email, password);
+      await signUp(email, password);
     }
   };
 
