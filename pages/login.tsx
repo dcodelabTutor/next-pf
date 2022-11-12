@@ -1,10 +1,3 @@
-//https://react-hook-form.com/get-started
-//npm install react-hook-form
-
-//이메일, 비번을 입력하고 Sign In 버튼을 클릭하면 경고창이 뜨는데..
-//firebase- authenticaion으로 이동해서 email, password로 활성화 및 첫번째꺼 체크
-//이후 다시 새로고침후 로그인시  뜨는 경고창에서 유저가 없다는 메세지가 뜨면 성공
-
 import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -68,7 +61,6 @@ function login() {
             className="input"
             {...register('email', { required: true })}
           />
-          {/* 해당 항목 미입력시 출력될 에러 구문 */}
           {errors.email && (
             <span className="p-1 text-[13px] font-light  text-orange-500">
               Please enter a valid email
