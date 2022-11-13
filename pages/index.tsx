@@ -1,6 +1,4 @@
-//npm i @mui/material@5.5.1
-//npm i @emotion/react@11.8.2
-//npm i @emotion/styled@11.8.1
+//npm i react-player
 
 import Head from 'next/head';
 import Banner from '../components/Banner';
