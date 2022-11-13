@@ -1,4 +1,6 @@
-//npm install recoil
+//npm i @mui/material@5.5.1
+//npm i @emotion/react@11.8.2
+//npm i @emotion/styled@11.8.1
 
 import Head from 'next/head';
 import Banner from '../components/Banner';
@@ -8,7 +10,7 @@ import useAuth from '../hooks/useAuth';
 import { Movie } from '../typings';
 import requests from '../utils/requests';
 import { useRecoilValue } from 'recoil';
-import { modalState } from '../atoms/modalAtoms';
+import { modalState } from '../atoms/modalAtom';
 import Modal from '../components/Modal';
 
 interface Props {
