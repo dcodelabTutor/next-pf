@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import useAuth from '../hooks/useAuth';
 
@@ -11,7 +11,8 @@ interface Inputs {
 
 function login() {
   const [Login, setLogin] = useState(false);
-  const { signIn, signUp } = useAuth();
+  const [Join, setJoin]= useState(false);
+  const { signIn, signUp, user } = useAuth();
 
   const {
     register,
@@ -20,12 +21,18 @@ function login() {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
-    if (Login) {
+    if (Login && !Join) {
+      console.log('sing in')
       await signIn(email, password);
     } else {
+      console.log('sign up')
       await signUp(email, password);
     }
   };
+
+  useEffect(()=>{
+    console.log(user);
+  },[])
 
   return (
     <div className="relative flex h-screen w-screen fex-col bg-black md:items-center md:justify-center md:bg-transparent">
@@ -51,7 +58,13 @@ function login() {
       <form
         className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14"
         onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="text-4xl font-semibold">Sign In</h1>
+
+        {
+          Join 
+            ? <h1 className="text-4xl font-semibold">Sign Up</h1>
+            : <h1 className="text-4xl font-semibold">Sign In</h1>
+        } 
+        
 
         <div className="space-y-4">
           <label htmlFor=""></label>
@@ -83,8 +96,11 @@ function login() {
 
         <button
           className="w-full rounded bg-[#e50914] py-3 font-semibold"
-          onClick={() => setLogin(true)}>
-          Sign In
+          onClick={() => {
+            setLogin(true);
+            setJoin(false);
+          }}>
+          {Join ? 'Sign Up' : 'Sign In'}
         </button>
 
         <div className="text-[gray]">
@@ -92,7 +108,10 @@ function login() {
           <button
             type="submit"
             className="text-white hover:underline cur"
-            onClick={() => setLogin(false)}>
+            onClick={() => {
+              setLogin(false);
+              setJoin(true);
+            } }>
             Sign up now
           </button>
         </div>
