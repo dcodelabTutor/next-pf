@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import useAuth from '../hooks/useAuth';
 
@@ -17,6 +17,7 @@ function login() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm<Inputs>();
 
@@ -24,9 +25,11 @@ function login() {
     if (Login && !Join) {
       console.log('sing in')
       await signIn(email, password);
+      reset();
     } else {
       console.log('sign up')
       await signUp(email, password);
+      reset();
     }
   };
 
@@ -68,7 +71,7 @@ function login() {
 
         <div className="space-y-4">
           <label htmlFor=""></label>
-          <input
+          <input          
             type="email"
             placeholder="Email"
             className="input"
@@ -98,7 +101,7 @@ function login() {
           className="w-full rounded bg-[#e50914] py-3 font-semibold"
           onClick={() => {
             setLogin(true);
-            setJoin(false);
+            setJoin(false);          
           }}>
           {Join ? 'Sign Up' : 'Sign In'}
         </button>

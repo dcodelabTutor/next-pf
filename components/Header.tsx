@@ -9,9 +9,10 @@ import useAuth from '../hooks/useAuth';
 
 function Header() {
   const [IsScrolled, setIsScrolled] = useState(false);
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   useEffect(() => {
+    console.log(user);
     const handleScroll = () => {
       if (window.scrollY > 0) {
         setIsScrolled(true);
@@ -54,6 +55,7 @@ function Header() {
           className="cursor-pointer rounded"
           onClick={logout}
         />
+        <span>{user?.email}</span>
         {/* </Link> */}
       </div>
     </header>
